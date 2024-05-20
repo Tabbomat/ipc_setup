@@ -49,6 +49,6 @@ fi
 # Cleanup
 echo "Cleaning up ..."
 cd ..
-rm -rf $ZIP_FILE #$TARGET_DIR
+rm -f $ZIP_FILE
 
 echo "Done!"
