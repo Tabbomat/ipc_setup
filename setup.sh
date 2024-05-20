@@ -8,13 +8,18 @@ sudo apt update --allow-insecure-repositories
 sudo apt install -y cmake gcc build-essential libx11-dev zlib1g-dev libjpeg62-turbo-dev libpixman-1-dev libfltk1.3-dev libgnutls28-dev libpam0g-dev gettext libxi-dev libxrender-dev netcat unzip &&
 
 # install vncviewer
-cd ~ && mkdir vnc && cd vnc &&
-wget https://github.com/TigerVNC/tigervnc/archive/refs/tags/v1.12.0.tar.gz -O tigervnc.tar.gz &&
-tar -xf tigervnc.tar.gz &&
-cd tigervnc-1.12.0/ &&
-cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DINSTALL_SYSTEMD_UNITS=OFF -Wno-dev . && make && sudo make install &&
-sudo chmod -R 777 /usr/local/bin/ &&
-cd ~ && rm -rf vnc &&
+if [[ ! -f /usr/local/bin/vncviewer ]]; then
+    cd ~ && mkdir -p vnc && cd vnc &&
+    wget https://github.com/TigerVNC/tigervnc/archive/refs/tags/v1.12.0.tar.gz -O tigervnc.tar.gz &&
+    tar -xf tigervnc.tar.gz &&
+    cd tigervnc-1.12.0/ &&
+    cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DINSTALL_SYSTEMD_UNITS=OFF -Wno-dev . && make && sudo make install &&
+    sudo chmod -R 777 /usr/local/bin/ &&
+    cd ~ && rm -rf vnc
+else
+    echo 'vncviewer already exists, skipping installation'
+fi
+
 
 # setup xinitrc
 echo 'until nc -z 192.168.214.1 5900
@@ -25,7 +30,11 @@ exec /usr/local/bin/vncviewer -FullScreen -geometry 1920x1080+0+0 -MenuKey Pause
 
 # setup auto startx
 echo 'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-    exec startx
+    if lsblk | grep -q "sdb1"; then
+        echo "USB stick detected. Debug mode enabled."
+    else
+        exec startx
+    fi
 fi' > ~/.bash_profile &&
 
 # setup auto login

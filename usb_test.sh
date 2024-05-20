@@ -18,8 +18,8 @@ if lsblk | grep -q "sdb1"; then
         echo "USB stick mounted at $MOUNT_POINT."
 
         # Write the debug file
-        echo "Debug information" > "$MOUNT_POINT/debug.txt"
-        echo "File debug.txt written to the USB stick."
+		bash ~/ipc_setup-main/passwd_status.sh "$MOUNT_POINT/password.txt"
+        echo "password information written to the USB stick."
 
         # Unmount the USB stick
         sudo umount "$MOUNT_POINT"
