@@ -55,3 +55,14 @@ cd ..
 rm -f $ZIP_FILE
 
 echo "Done!"
+
+read -p "Do you want to reboot now? (Y/N): " choice
+case "$choice" in
+  y|Y )
+    echo "Rebooting system..."
+    reboot
+    ;;
+  * )
+    echo "Skipping reboot."
+    ;;
+esac
