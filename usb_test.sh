@@ -15,7 +15,7 @@ if lsblk | grep -q "sdb1"; then
     [ ! -d "$MOUNT_POINT" ] && sudo mkdir -p "$MOUNT_POINT"
 
     # Mount the USB stick
-    sudo mount "$USB_DEVICE" "$MOUNT_POINT"
+    mount "$USB_DEVICE" "$MOUNT_POINT"
 
     if [ $? -eq 0 ]; then
         echo "USB stick mounted at $MOUNT_POINT."
@@ -25,7 +25,7 @@ if lsblk | grep -q "sdb1"; then
         echo "password information written to the USB stick."
 
         # Unmount the USB stick
-        sudo umount "$MOUNT_POINT"
+        umount "$MOUNT_POINT"
         echo "USB stick unmounted."
 
         # Clean up
