@@ -1,7 +1,13 @@
 #!/bin/bash
 
-# Define the output file
-output_file="passwd_status.txt"
+# Check if the output file path is provided as an argument
+if [ -z "$1" ]; then
+    echo "Usage: $0 <output_file>"
+    exit 1
+fi
+
+# Use the provided argument as the output file path
+output_file="$1"
 
 # Execute the passwd -S command
 passwd_status=$(passwd -S)
