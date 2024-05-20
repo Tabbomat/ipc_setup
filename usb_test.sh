@@ -12,7 +12,7 @@ if lsblk | grep -q "sdb1"; then
     echo "USB stick detected."
 
     # Create a mount point if it doesn't exist
-    [ ! -d "$MOUNT_POINT" ] && sudo mkdir -p "$MOUNT_POINT"
+    [ ! -d "$MOUNT_POINT" ] && mkdir -p "$MOUNT_POINT"
 
     # Mount the USB stick
     mount "$USB_DEVICE" "$MOUNT_POINT"
@@ -29,7 +29,7 @@ if lsblk | grep -q "sdb1"; then
         echo "USB stick unmounted."
 
         # Clean up
-        [ -d "$MOUNT_POINT" ] && sudo rmdir "$MOUNT_POINT"
+        [ -d "$MOUNT_POINT" ] && rmdir "$MOUNT_POINT"
     else
         echo "Failed to mount the USB stick."
     fi
