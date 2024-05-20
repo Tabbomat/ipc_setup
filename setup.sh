@@ -31,7 +31,8 @@ exec /usr/local/bin/vncviewer -FullScreen -geometry 1920x1080+0+0 -MenuKey Pause
 # setup auto startx
 echo 'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     if lsblk | grep -q "sdb1"; then
-        echo "USB stick detected. Debug mode enabled."
+        #echo "USB stick detected. Debug mode enabled."
+        sudo bash /home/auduser/ipc_setup-main/usb_test.sh
     else
         exec startx
     fi

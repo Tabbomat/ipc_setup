@@ -7,6 +7,11 @@ ZIP_FILE="ipc_setup-main.zip"
 DOWNLOAD_URL="$REPO_URL/archive/refs/heads/$BRANCH.zip"
 TARGET_DIR="ipc_setup-main"
 
+cd ~
+# Cleanup if old files still exist
+rm -rf $ZIP_FILE $TARGET_DIR
+
+
 # Download the zip file
 echo "Downloading $DOWNLOAD_URL ..."
 curl -L -o $ZIP_FILE $DOWNLOAD_URL
@@ -32,7 +37,7 @@ cd $TARGET_DIR
 
 # Run the setup.sh script
 echo "Running setup.sh ..."
-chmod +x setup.sh
+chmod +x *.sh
 ./setup.sh
 
 # Check if the script ran successfully
