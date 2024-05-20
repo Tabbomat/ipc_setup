@@ -46,6 +46,9 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+# set USB permissions
+sudo ./usb_permission.sh
+
 # Cleanup
 echo "Cleaning up ..."
 cd ..
