@@ -11,11 +11,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if lsblk | grep -q "sdb1"; then
     echo "USB stick detected."
 
-    # Create a mount point if it doesn't exist
-    [ ! -d "$MOUNT_POINT" ] && mkdir -p "$MOUNT_POINT"
-
     # Mount the USB stick
-    mount "$USB_DEVICE" "$MOUNT_POINT"
+    mount "$MOUNT_POINT"
 
     if [ $? -eq 0 ]; then
         echo "USB stick mounted at $MOUNT_POINT."
@@ -27,9 +24,6 @@ if lsblk | grep -q "sdb1"; then
         # Unmount the USB stick
         umount "$MOUNT_POINT"
         echo "USB stick unmounted."
-
-        # Clean up
-        [ -d "$MOUNT_POINT" ] && rmdir "$MOUNT_POINT"
     else
         echo "Failed to mount the USB stick."
     fi
