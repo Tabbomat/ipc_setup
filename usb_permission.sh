@@ -4,6 +4,15 @@
 USB_DEVICE="/dev/sdb1"
 MOUNT_POINT="/mnt/usb_stick"
 
+# Ensure mount point directory exists
+if [ ! -d "$MOUNT_POINT" ]; then
+    sudo mkdir -p "$MOUNT_POINT"
+fi
+
+# Set appropriate permissions and ownership for the mount point
+sudo chown $(whoami):$(whoami) "$MOUNT_POINT"
+sudo chmod 777 "$MOUNT_POINT"
+
 # Check if /etc/fstab modification is needed
 if ! grep -q "$USB_DEVICE" /etc/fstab; then
     # Append entry to /etc/fstab
