@@ -5,7 +5,7 @@
 
 # install packages
 sudo apt update --allow-insecure-repositories
-sudo apt install -y cmake gcc build-essential libx11-dev zlib1g-dev libjpeg62-turbo-dev libpixman-1-dev libfltk1.3-dev libgnutls28-dev libpam0g-dev gettext libxi-dev libxrender-dev netcat &&
+sudo apt install -y cmake gcc build-essential libx11-dev zlib1g-dev libjpeg62-turbo-dev libpixman-1-dev libfltk1.3-dev libgnutls28-dev libpam0g-dev gettext libxi-dev libxrender-dev netcat unzip &&
 
 # install vncviewer
 cd ~ && mkdir vnc && cd vnc &&
