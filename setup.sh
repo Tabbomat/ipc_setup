@@ -61,7 +61,9 @@ if ! sudo grep -q 'Section "ServerFlags"' /usr/share/X11/xorg.conf.d/10-quirks.c
 EndSection' | sudo tee -a /usr/share/X11/xorg.conf.d/10-quirks.conf >/dev/null
 fi
 
-echo "Bitte Internetkabel aus eno1 entfernen und eno2 mit der Steuerung verbinden, danach ENTER drücken"
-read
+echo "Bitte Internetkabel aus eno1 entfernen und eno2 mit der Steuerung verbinden, danach ENTER drücken oder 'skip' eingeben, um den Neustart zu überspringen"
+read input
 
-sudo reboot
+if [[ ! "$input" =~ ^[Ss][Kk][Ii][Pp]$ ]]; then
+    sudo reboot
+fi
