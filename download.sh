@@ -60,7 +60,7 @@ read -p "Do you want to reboot now? (Y/N): " choice
 case "$choice" in
   y|Y )
     echo "Rebooting system..."
-    reboot
+    sudo reboot
     ;;
   * )
     echo "Skipping reboot."
