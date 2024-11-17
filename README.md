@@ -30,6 +30,7 @@ Plug in boot usb stick and boot from it. In case it is not detected:
 eno1:
 - `dhcp`
 - `No` obtain hostname with DHCP
+
 eno2:
 - `static`
 - IP Address: `192.168.214.241`
