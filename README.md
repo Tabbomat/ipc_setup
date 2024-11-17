@@ -12,6 +12,8 @@ Plug in boot usb stick and boot from it. In case it is not detected:
 - `chainloader /efi/boot/bootx64.efi`
 - `boot` and press `ENTER` to select the first option
 
+![US keyboard layout](https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/KB_US-International.svg/2560px-KB_US-International.svg.png)
+
 # installing the os
 - Select `Install System`
 - Select `Install selected image` and confirm with `Yes!`
